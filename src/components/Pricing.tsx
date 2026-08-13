@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Check, Sparkles, ShieldCheck } from 'lucide-react';
 
 interface PricingProps {
@@ -7,8 +7,29 @@ interface PricingProps {
 
 export const Pricing: React.FC<PricingProps> = ({ onOpenLeadModalWithPlan }) => {
   const [billingCycle, setBillingCycle] = useState<'mensal' | 'anual'>('anual');
+  const [apiPlans, setApiPlans] = useState<any[]>([]);
 
-  const plans = [
+  useEffect(() => {
+    const fetchPlans = async () => {
+      try {
+        const apiUrl = import.meta.env.VITE_SCHOOL_API_URL || 'http://localhost:4000';
+        const response = await fetch(`${apiUrl}/plans`);
+        if (response.ok) {
+          const data = await response.json();
+          setApiPlans(data);
+        }
+      } catch (error) {
+        console.error('Error fetching plans:', error);
+      }
+    };
+    fetchPlans();
+  }, []);
+
+  const formatPrice = (price: number) => {
+    return new Intl.NumberFormat('pt-AO').format(price) + ' Kz';
+  };
+
+  const defaultPlans = [
     {
       name: 'Starter',
       badge: 'Escolas Pequenas',
@@ -66,6 +87,21 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenLeadModalWithPlan }) => 
       ]
     }
   ];
+
+  const plans = defaultPlans.map(plan => {
+    const apiPlan = apiPlans.find(p => p.name.toLowerCase() === plan.name.toLowerCase());
+    if (apiPlan) {
+      const mPrice = apiPlan.price;
+      const aPrice = mPrice * 0.8; // 20% discount
+      return {
+        ...plan,
+        monthlyPrice: formatPrice(mPrice),
+        annualPrice: formatPrice(aPrice),
+        annualNote: `Cobrado ${formatPrice(aPrice * 12)} / ano`
+      };
+    }
+    return plan;
+  });
 
   return (
     <section id="planos" className="py-24 relative overflow-hidden bg-[#0b0f19]">

@@ -52,7 +52,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
     if (!validation.success) {
       const formattedErrors: Record<string, string> = {};
       validation.error.issues.forEach(issue => {
-        formattedErrors[issue.path[0]] = issue.message;
+        formattedErrors[String(issue.path[0])] = issue.message;
       });
       setErrors(formattedErrors);
       return;
@@ -61,7 +61,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
     setIsSubmitting(true);
 
     try {
-      const apiUrl = import.meta.env.VITE_SCHOOL_API_URL || 'http://localhost:4000';
+      const apiUrl = import.meta.env.VITE_SCHOOL_API_URL;
       const response = await fetch(`${apiUrl}/leads`, {
         method: 'POST',
         headers: {

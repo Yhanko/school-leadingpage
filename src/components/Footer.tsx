@@ -73,11 +73,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLeadModal }) => {
               </li>
               <li className="flex items-center gap-2 text-gray-300">
                 <Phone className="w-4 h-4 text-[#FF5777] shrink-0" />
-                <span>+244 923 000 000 / 990 000 000</span>
+                <span>+244 947 315 059</span>
               </li>
               <li className="flex items-center gap-2 text-gray-300">
                 <Mail className="w-4 h-4 text-[#FF5777] shrink-0" />
-                <span>comercial@yhankoeduca.ao</span>
+                <span>yhankocorporation@gmail.com</span>
               </li>
             </ul>
           </div>

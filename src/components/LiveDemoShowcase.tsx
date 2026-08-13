@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { BookOpen, DollarSign, Users, AlertTriangle, FileSpreadsheet, CheckCircle2, ShieldCheck, Sparkles } from 'lucide-react';
+import futureImg from '../assets/future.jpg';
+import financeImg from '../assets/Finance.gif';
+import chatcImg from '../assets/chatc.gif';
+import securityImg from '../assets/securityData.jpg';
+import automacaoImg from '../assets/automacao.jpg';
 
 interface Module {
   id: string;
@@ -11,6 +17,7 @@ interface Module {
   highlights: string[];
   badge: string;
   accentColor: string;
+  image: string;
 }
 
 export const LiveDemoShowcase: React.FC = () => {
@@ -29,7 +36,8 @@ export const LiveDemoShowcase: React.FC = () => {
         'Histórico escolar consolidado de cada estudante'
       ],
       badge: 'Pedagógico & Ensino',
-      accentColor: '#FF5777'
+      accentColor: '#FF5777',
+      image: futureImg
     },
     {
       id: 'financeiro',
@@ -45,7 +53,8 @@ export const LiveDemoShowcase: React.FC = () => {
         'Isenções, bolsas de estudo e descontos configuráveis'
       ],
       badge: 'Controlo Financeiro',
-      accentColor: '#6366f1'
+      accentColor: '#6366f1',
+      image: financeImg
     },
     {
       id: 'encarregados',
@@ -61,7 +70,8 @@ export const LiveDemoShowcase: React.FC = () => {
         'Canal de suporte direto com a secretaria da escola'
       ],
       badge: 'Comunicação Familiar',
-      accentColor: '#10b981'
+      accentColor: '#10b981',
+      image: chatcImg
     },
     {
       id: 'disciplinar',
@@ -77,7 +87,8 @@ export const LiveDemoShowcase: React.FC = () => {
         'Relatório consolidado para o Conselho Disciplinar'
       ],
       badge: 'Disciplina & Ambiente',
-      accentColor: '#f59e0b'
+      accentColor: '#f59e0b',
+      image: securityImg
     },
     {
       id: 'pautas',
@@ -93,7 +104,8 @@ export const LiveDemoShowcase: React.FC = () => {
         'Assinatura digital e validação por código QR'
       ],
       badge: 'Relatórios Oficiais',
-      accentColor: '#06b6d4'
+      accentColor: '#06b6d4',
+      image: automacaoImg
     }
   ];
 
@@ -105,7 +117,13 @@ export const LiveDemoShowcase: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto space-y-4 mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-card border-gray-700 text-xs font-semibold text-[#FF5777]">
             <Sparkles className="w-3.5 h-3.5" /> Módulos do Sistema
           </div>
@@ -115,7 +133,7 @@ export const LiveDemoShowcase: React.FC = () => {
           <p className="text-gray-400 text-base">
             Explore abaixo as principais funcionalidades desenhadas à medida do sistema de ensino angolano.
           </p>
-        </div>
+        </motion.div>
 
         {/* Tab Navigation */}
         <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
@@ -140,7 +158,13 @@ export const LiveDemoShowcase: React.FC = () => {
         </div>
 
         {/* Active Tab Content Card */}
-        <div className="glass-card p-8 sm:p-12 border-gray-800 relative overflow-hidden">
+        <motion.div 
+          key={activeTab}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          className="glass-card p-8 sm:p-12 border-gray-800 relative overflow-hidden"
+        >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             {/* Left Content */}
@@ -160,17 +184,28 @@ export const LiveDemoShowcase: React.FC = () => {
               {/* Highlights Checklist */}
               <div className="space-y-3 pt-2">
                 {activeModule.highlights.map((item, i) => (
-                  <div key={i} className="flex items-start gap-3 text-sm text-gray-200">
+                  <motion.div 
+                    key={i} 
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: i * 0.1 }}
+                    className="flex items-start gap-3 text-sm text-gray-200"
+                  >
                     <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
                     <span>{item}</span>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
 
             </div>
 
             {/* Right Visual Interactive Card */}
-            <div className="lg:col-span-6">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="lg:col-span-6"
+            >
               <div className="gradient-border shadow-2xl">
                 <div className="gradient-border-inner p-6 sm:p-8 space-y-5 bg-[#121827]">
                   
@@ -189,40 +224,21 @@ export const LiveDemoShowcase: React.FC = () => {
                     </span>
                   </div>
 
-                  {/* Simulated Feature Card Preview */}
-                  <div className="space-y-3">
-                    <div className="p-4 rounded-xl bg-gray-900/80 border border-gray-800 flex justify-between items-center">
-                      <div>
-                        <span className="text-xs text-gray-400 font-medium">Estado do Módulo</span>
-                        <p className="text-sm font-bold text-white mt-0.5">Sincronização em Tempo Real</p>
-                      </div>
-                      <span className="text-xs font-semibold px-2.5 py-1 rounded bg-indigo-500/20 text-indigo-300">
-                        100% Automatizado
-                      </span>
-                    </div>
-
-                    <div className="p-4 rounded-xl bg-gray-900/80 border border-gray-800 space-y-2">
-                      <div className="flex justify-between text-xs text-gray-300 font-semibold">
-                        <span>Aproveitamento Médio da Escola</span>
-                        <span className="text-emerald-400 font-bold">16.4 Valores</span>
-                      </div>
-                      <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
-                        <div className="h-full bg-gradient-to-r from-[#6366f1] to-[#FF5777] rounded-full w-[82%]" />
-                      </div>
-                    </div>
-
-                    <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-between text-xs text-emerald-300 font-medium">
-                      <span>✓ Relatórios gerados em PDF conforme diretrizes vigentes</span>
-                      <span className="font-bold underline cursor-pointer">Ver PDF</span>
-                    </div>
+                  {/* Real Image Preview */}
+                  <div className="w-full overflow-hidden rounded-xl bg-[#0b0f19] border border-gray-800">
+                    <img 
+                      src={activeModule.image} 
+                      alt={activeModule.name} 
+                      className="w-full h-auto object-cover" 
+                    />
                   </div>
 
                 </div>
               </div>
-            </div>
+            </motion.div>
 
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </section>

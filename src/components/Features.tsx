@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Headset, Zap, ShieldCheck, TrendingUp, Smartphone, Award, Clock, FileCheck } from 'lucide-react';
 
 export const Features: React.FC = () => {
@@ -46,7 +47,13 @@ export const Features: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto space-y-4 mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-card border-gray-700 text-xs font-semibold text-[#FF5777]">
             <Award className="w-3.5 h-3.5" /> Diferenciais Exclusivos
           </div>
@@ -56,14 +63,21 @@ export const Features: React.FC = () => {
           <p className="text-gray-400 text-base">
             Desenvolvido a pensar nos desafios reais da gestão de instituições privadas e públicas em Angola.
           </p>
-        </div>
+        </motion.div>
 
         {/* Advantage Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {advantages.map((adv, i) => {
             const Icon = adv.icon;
             return (
-              <div key={i} className="glass-card p-8 group relative overflow-hidden flex flex-col justify-between">
+              <motion.div 
+                key={i} 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="glass-card p-8 group relative overflow-hidden flex flex-col justify-between"
+              >
                 <div>
                   <div className="flex items-center justify-between mb-6">
                     <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#FF5777]/20 to-[#6366f1]/20 border border-[#FF5777]/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -87,7 +101,7 @@ export const Features: React.FC = () => {
                   <Clock className="w-3.5 h-3.5 text-[#FF5777]" />
                   <span>Economize tempo e recursos hoje</span>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

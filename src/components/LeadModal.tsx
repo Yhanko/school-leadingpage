@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { X, Sparkles, Send, CheckCircle2, Phone, Mail, Building2, MapPin } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import toast from 'react-hot-toast';
 
 interface LeadModalProps {
   isOpen: boolean;
@@ -65,7 +66,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
     } catch (error) {
       console.error('Error submitting lead:', error);
       setIsSubmitting(false);
-      alert('Ocorreu um erro ao enviar o pedido. Por favor, tente novamente.');
+      toast.error('Ocorreu um erro ao enviar o pedido. Por favor, verifique os seus dados e tente novamente.');
     }
   };
 

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Toaster } from 'react-hot-toast';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { LiveDemoShowcase } from './components/LiveDemoShowcase';
@@ -32,6 +33,7 @@ export function App() {
 
   return (
     <div className="min-h-screen bg-[#0b0f19] text-gray-100 font-sans selection:bg-[#FF5777] selection:text-white">
+      <Toaster position="top-right" />
       {/* Navigation */}
       <Navbar onOpenLeadModal={handleOpenLeadModal} />
 

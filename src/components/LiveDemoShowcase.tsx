@@ -127,9 +127,6 @@ export const LiveDemoShowcase: React.FC = () => {
     }
   ];
 
-  const [activeTab, setActiveTab] = useState<string>(modules[0].id);
-  const activeModule = modules.find(m => m.id === activeTab) || modules[0];
-
   return (
     <section id="demonstracao" className="py-24 relative overflow-hidden bg-[#0d121f]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -140,7 +137,7 @@ export const LiveDemoShowcase: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto space-y-4 mb-16"
+          className="text-center max-w-3xl mx-auto space-y-4 mb-20"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-card border-gray-700 text-xs font-semibold text-[#FF5777]">
             <Sparkles className="w-3.5 h-3.5" /> Módulos do Sistema
@@ -153,110 +150,84 @@ export const LiveDemoShowcase: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Tab Navigation */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
-          {modules.map((mod) => {
-            const Icon = mod.icon;
-            const isActive = mod.id === activeTab;
+        {/* Stacked Alternating Modules */}
+        <div className="space-y-32">
+          {modules.map((mod, index) => {
+            const isEven = index % 2 === 0;
+
             return (
-              <button
+              <motion.div 
                 key={mod.id}
-                onClick={() => setActiveTab(mod.id)}
-                className={`flex items-center gap-2.5 px-5 py-3 rounded-xl font-semibold text-sm transition-all duration-300 cursor-pointer ${
-                  isActive
-                    ? 'bg-[#FF5777] text-white shadow-lg shadow-[#FF5777]/30 scale-105'
-                    : 'glass-card text-gray-300 hover:text-white hover:border-gray-600'
-                }`}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.7 }}
+                className="relative"
               >
-                <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-gray-400'}`} />
-                {mod.name}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Active Tab Content Card */}
-        <motion.div 
-          key={activeTab}
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="glass-card p-8 sm:p-12 border-gray-800 relative overflow-hidden"
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            
-            {/* Left Content */}
-            <div className="lg:col-span-6 space-y-6">
-              <span className="inline-block px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-[#FF5777]/20 text-[#FF5777] border border-[#FF5777]/30">
-                {activeModule.badge}
-              </span>
-              
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-snug">
-                {activeModule.title}
-              </h3>
-              
-              <p className="text-base text-gray-300 leading-relaxed">
-                {activeModule.description}
-              </p>
-
-              {/* Highlights Checklist */}
-              <div className="space-y-3 pt-2">
-                {activeModule.highlights.map((item, i) => (
-                  <motion.div 
-                    key={i} 
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: i * 0.1 }}
-                    className="flex items-start gap-3 text-sm text-gray-200"
-                  >
-                    <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
-                    <span>{item}</span>
-                  </motion.div>
-                ))}
-              </div>
-
-            </div>
-
-            {/* Right Visual Interactive Card */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="lg:col-span-6"
-            >
-              <div className="gradient-border shadow-2xl">
-                <div className="gradient-border-inner p-6 sm:p-8 space-y-5 bg-[#121827]">
+                <div className={`grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
                   
-                  <div className="flex items-center justify-between border-b border-gray-800 pb-4">
-                    <div className="flex items-center gap-3">
-                      <div className="p-2.5 rounded-lg bg-[#FF5777]/20 text-[#FF5777]">
-                        <activeModule.icon className="w-6 h-6" />
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-white text-base">{activeModule.name}</h4>
-                        <p className="text-xs text-gray-400">{activeModule.subtitle}</p>
-                      </div>
-                    </div>
-                    <span className="text-xs bg-emerald-500/20 text-emerald-400 font-semibold px-2.5 py-1 rounded-full flex items-center gap-1">
-                      <ShieldCheck className="w-3.5 h-3.5" /> Ativo
+                  {/* Text Content */}
+                  <div className={`lg:col-span-5 space-y-6 ${!isEven ? 'lg:order-2' : 'lg:order-1'}`}>
+                    <span className="inline-block px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-[#FF5777]/10 text-[#FF5777] border border-[#FF5777]/20">
+                      {mod.badge}
                     </span>
+                    
+                    <h3 className="text-3xl sm:text-4xl font-extrabold text-white leading-snug">
+                      {mod.title}
+                    </h3>
+                    
+                    <p className="text-lg text-gray-300 leading-relaxed">
+                      {mod.description}
+                    </p>
+
+                    <div className="space-y-3 pt-4">
+                      {mod.highlights.map((item, i) => (
+                        <div key={i} className="flex items-start gap-3 text-base text-gray-200">
+                          <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
-                  {/* Real Image Preview */}
-                  <div className="w-full overflow-hidden rounded-xl bg-[#0b0f19] border border-gray-800">
-                    <img 
-                      src={activeModule.image} 
-                      alt={activeModule.name} 
-                      className="w-full h-auto object-cover" 
-                    />
+                  {/* Visual Image Card */}
+                  <div className={`lg:col-span-7 ${!isEven ? 'lg:order-1' : 'lg:order-2'}`}>
+                    <div className="gradient-border shadow-2xl shadow-indigo-500/10 hover:shadow-[#FF5777]/20 transition-shadow duration-500">
+                      <div className="gradient-border-inner p-2 bg-[#121827]">
+                        
+                        <div className="flex items-center justify-between px-4 py-3 border-b border-gray-800/60 mb-2">
+                          <div className="flex items-center gap-3">
+                            <div className="p-2 rounded-lg bg-[#FF5777]/10 text-[#FF5777]">
+                              <mod.icon className="w-5 h-5" />
+                            </div>
+                            <div>
+                              <h4 className="font-bold text-white text-sm">{mod.name}</h4>
+                            </div>
+                          </div>
+                          <span className="text-[10px] bg-emerald-500/20 text-emerald-400 font-bold px-2 py-1 rounded-full uppercase tracking-wider">
+                            Ativo
+                          </span>
+                        </div>
+
+                        {/* Real Image Preview */}
+                        <div className="w-full overflow-hidden rounded-lg bg-[#0b0f19]">
+                          <img 
+                            src={mod.image} 
+                            alt={mod.name} 
+                            loading="lazy"
+                            className="w-full h-auto max-h-[500px] object-cover hover:scale-105 transition-transform duration-700 ease-out" 
+                          />
+                        </div>
+
+                      </div>
+                    </div>
                   </div>
 
                 </div>
-              </div>
-            </motion.div>
-
-          </div>
-        </motion.div>
+              </motion.div>
+            );
+          })}
+        </div>
 
       </div>
     </section>

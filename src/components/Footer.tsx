@@ -9,15 +9,15 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLeadModal }) => {
   return (
     <footer className="bg-[#080b12] border-t border-gray-800 text-gray-400 pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-gray-800/80">
-          
+
           {/* Col 1: Brand info */}
           <div className="md:col-span-4 space-y-4">
             <a href="#home" className="flex items-center">
-              <img 
-                src={logoImg} 
-                alt="Yhanko Logo" 
+              <img
+                src={logoImg}
+                alt="Yhanko Logo"
                 className="h-8 w-auto"
               />
             </a>
@@ -46,7 +46,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLeadModal }) => {
             <ul className="space-y-2 text-xs">
               <li>
                 <a
-                  href="http://localhost:3000/login"
+                  href="/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white hover:text-[#FF5777] flex items-center gap-1 font-semibold"

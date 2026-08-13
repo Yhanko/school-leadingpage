@@ -15,24 +15,19 @@ export const Hero: React.FC<HeroProps> = ({ onOpenLeadModal }) => {
       <div className="absolute top-1/3 right-10 w-[450px] h-[450px] bg-[#6366f1]/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Top Badge */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="flex justify-center mb-6"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-[#FF5777]/30 bg-[#FF5777]/10 text-xs font-semibold text-white shadow-lg">
-            <span className="flex h-2 w-2 rounded-full bg-[#FF5777] animate-ping" />
-            <Award className="w-4 h-4 text-[#FF5777]" />
-            Plataforma N.º 1 em Angola para Gestão de Escolas e Colégios
-          </div>
         </motion.div>
 
         {/* Hero Title */}
         <div className="text-center max-w-4xl mx-auto space-y-6">
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -41,7 +36,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenLeadModal }) => {
             Transforme a Gestão da sua Escola com <span className="gradient-text-pink">Inteligência</span> e <span className="gradient-text-purple">Controlo Total</span>
           </motion.h1>
 
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -51,7 +46,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenLeadModal }) => {
           </motion.p>
 
           {/* Action CTAs */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -75,7 +70,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenLeadModal }) => {
           </motion.div>
 
           {/* Micro Trust Points */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
@@ -88,13 +83,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenLeadModal }) => {
               <ShieldCheck className="w-4 h-4 text-indigo-400" /> Suporte técnico local em Luanda
             </span>
             <span className="flex items-center gap-1.5">
-              <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" /> 4.9/5 de Avaliação dos Diretores
+              <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" /> 5 de Avaliação dos Diretores
             </span>
           </motion.div>
         </div>
 
         {/* Hero Interactive Mockup Showcase */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -116,7 +111,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenLeadModal }) => {
                   </span>
                 </div>
               </div>
-              
+
               <img src={heroImg} alt="Dashboard yhankoEduca" className="w-full h-auto object-cover" />
             </div>
           </div>
@@ -130,8 +125,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenLeadModal }) => {
             { value: '-85%', label: 'Redução de Erros em Pautas' },
             { value: '100%', label: 'Conforme Legislação Angolana' }
           ].map((stat, i) => (
-            <motion.div 
-              key={i} 
+            <motion.div
+              key={i}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.6 + i * 0.1 }}

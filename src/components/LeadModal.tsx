@@ -80,7 +80,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
       <div className="gradient-border max-w-xl w-full relative shadow-2xl shadow-[#FF5777]/30">
         <div className="gradient-border-inner bg-[#121827] rounded-[15px] p-6 sm:p-8 max-h-[90vh] overflow-y-auto relative">
-          
+
           {/* Close button */}
           <button
             onClick={onClose}
@@ -245,7 +245,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
               </p>
 
               <div className="p-4 rounded-xl bg-gray-900 border border-gray-800 text-xs text-gray-400">
-                <span>Deseja atendimento imediato? Ligue para <strong className="text-white">+244 923 000 000</strong> ou envie mensagem no WhatsApp.</span>
+                <span>Deseja atendimento imediato? Ligue para <strong className="text-white">+244 947 315 059</strong> ou envie mensagem no WhatsApp.</span>
               </div>
 
               <button

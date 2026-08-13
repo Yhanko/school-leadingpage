@@ -1,4 +1,5 @@
-import { GraduationCap, Phone, Mail, MapPin, ArrowUpRight } from 'lucide-react';
+import { Phone, Mail, MapPin, ArrowUpRight } from 'lucide-react';
+import logoImg from '../assets/yhankoIMG.png';
 
 interface FooterProps {
   onOpenLeadModal: () => void;
@@ -13,15 +14,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLeadModal }) => {
           
           {/* Col 1: Brand info */}
           <div className="md:col-span-4 space-y-4">
-            <a href="#home" className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#FF5777] to-[#6366f1] p-[2px]">
-                <div className="w-full h-full bg-[#0b0f19] rounded-[10px] flex items-center justify-center">
-                  <GraduationCap className="w-5 h-5 text-[#FF5777]" />
-                </div>
-              </div>
-              <span className="font-heading font-extrabold text-xl tracking-tight text-white">
-                yhanko<span className="text-[#FF5777]">Educa</span>
-              </span>
+            <a href="#home" className="flex items-center">
+              <img 
+                src={logoImg} 
+                alt="Yhanko Logo" 
+                className="h-8 w-auto"
+              />
             </a>
 
             <p className="text-xs text-gray-400 leading-relaxed max-w-sm">

@@ -10,9 +10,7 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ onOpenLeadModal }) => {
   return (
     <section id="home" className="relative pt-32 pb-24 overflow-hidden">
-      {/* Background Ambient Glow Effects */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#FF5777]/10 rounded-full blur-[140px] pointer-events-none animate-pulse-glow" />
-      <div className="absolute top-1/3 right-10 w-[450px] h-[450px] bg-[#6366f1]/10 rounded-full blur-[120px] pointer-events-none" />
+      {/* Background Ambient Glow Effects Removed for High-Contrast Metallic Look */}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
@@ -31,16 +29,16 @@ export const Hero: React.FC<HeroProps> = ({ onOpenLeadModal }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight"
+            className="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold tracking-tight text-on-surface leading-tight"
           >
-            Transforme a Gestão da sua Escola com <span className="gradient-text-pink">Inteligência</span> e <span className="gradient-text-purple">Controlo Total</span>
+            Transforme a Gestão da sua Escola com <span className="text-primary">Inteligência</span> e <span className="text-primary">Controlo Total</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed"
+            className="text-body-lg sm:text-headline-sm text-on-surface-variant max-w-2xl mx-auto leading-relaxed"
           >
             Elimine a burocracia, automatize a cobrança de propinas em Kz, gira pautas escolares e conecte professores, alunos e encarregados em tempo real.
           </motion.p>
@@ -54,7 +52,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenLeadModal }) => {
           >
             <button
               onClick={onOpenLeadModal}
-              className="w-full sm:w-auto gradient-btn text-white text-base font-bold px-8 py-4 rounded-xl flex items-center justify-center gap-3 shadow-xl shadow-[#FF5777]/25 cursor-pointer hover:scale-105 transition-all"
+              className="w-full sm:w-auto btn-primary flex items-center justify-center gap-3 text-body-lg"
             >
               Solicitar Demonstração Grátis
               <ArrowRight className="w-5 h-5" />
@@ -62,9 +60,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenLeadModal }) => {
 
             <a
               href="#demonstracao"
-              className="w-full sm:w-auto glass-card text-white text-base font-semibold px-8 py-4 rounded-xl flex items-center justify-center gap-2 border border-gray-700 hover:border-gray-500 transition-all hover:bg-gray-800/60"
+              className="w-full sm:w-auto btn-secondary flex items-center justify-center gap-2 text-body-lg"
             >
-              <Play className="w-4 h-4 text-[#FF5777] fill-[#FF5777]" />
+              <Play className="w-4 h-4 text-primary fill-primary" />
               Explorar Módulos Ao Vivo
             </a>
           </motion.div>
@@ -74,16 +72,16 @@ export const Hero: React.FC<HeroProps> = ({ onOpenLeadModal }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="flex flex-wrap items-center justify-center gap-6 pt-4 text-xs font-medium text-gray-400"
+            className="flex flex-wrap items-center justify-center gap-6 pt-4 text-label-caps text-on-surface-variant uppercase"
           >
             <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" /> Teste sem compromisso
+              <CheckCircle2 className="w-4 h-4 text-primary" /> Teste sem compromisso
             </span>
             <span className="flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-indigo-400" /> Suporte técnico local em Luanda
+              <ShieldCheck className="w-4 h-4 text-primary" /> Suporte técnico local em Luanda
             </span>
             <span className="flex items-center gap-1.5">
-              <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" /> 5 de Avaliação dos Diretores
+              <Star className="w-4 h-4 text-primary fill-primary" /> 5 de Avaliação dos Diretores
             </span>
           </motion.div>
         </div>
@@ -95,24 +93,24 @@ export const Hero: React.FC<HeroProps> = ({ onOpenLeadModal }) => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mt-16 relative max-w-5xl mx-auto"
         >
-          <div className="gradient-border shadow-2xl shadow-[#FF5777]/20">
-            <div className="gradient-border-inner overflow-hidden rounded-[15px] bg-[#0d121f]">
+          <div className="card-level-2 p-1">
+            <div className="bg-surface-container rounded-md overflow-hidden">
               {/* Fake Browser Bar */}
-              <div className="bg-[#182032] px-4 py-3 border-b border-gray-800 flex items-center justify-between">
+              <div className="bg-surface-container-high px-4 py-3 border-b border-[#414042] flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                  <div className="w-3 h-3 rounded-full bg-green-500/80" />
-                  <span className="ml-4 text-xs text-gray-400 font-mono hidden sm:inline">app.yhankoeduca.ao/dashboard</span>
+                  <div className="w-3 h-3 rounded-full bg-[#414042]" />
+                  <div className="w-3 h-3 rounded-full bg-[#414042]" />
+                  <div className="w-3 h-3 rounded-full bg-[#414042]" />
+                  <span className="ml-4 text-data-mono text-on-surface-variant hidden sm:inline">app.yhankoeduca.ao/dashboard</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[11px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full font-medium flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Sistema Ativo
+                  <span className="badge-valid flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#C0C2C5] animate-pulse" /> Sistema Ativo
                   </span>
                 </div>
               </div>
 
-              <img src={heroImg} alt="Dashboard yhankoEduca" className="w-full h-auto object-cover" />
+              <img src={heroImg} alt="Dashboard yhankoEduca" className="w-full h-auto object-cover opacity-90" />
             </div>
           </div>
         </motion.div>
@@ -130,10 +128,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenLeadModal }) => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.6 + i * 0.1 }}
-              className="glass-card p-6 border-t-2 border-t-[#FF5777]"
+              className="card-level-1 p-6 border-t-2 border-t-primary"
             >
-              <div className="text-3xl sm:text-4xl font-extrabold text-white font-heading">{stat.value}</div>
-              <div className="text-xs sm:text-sm font-medium text-gray-400 mt-1">{stat.label}</div>
+              <div className="text-3xl sm:text-4xl font-extrabold text-on-surface font-heading">{stat.value}</div>
+              <div className="text-body-md font-medium text-on-surface-variant mt-1">{stat.label}</div>
             </motion.div>
           ))}
         </div>

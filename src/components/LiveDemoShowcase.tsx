@@ -128,10 +128,9 @@ export const LiveDemoShowcase: React.FC = () => {
   ];
 
   return (
-    <section id="demonstracao" className="py-24 relative overflow-hidden bg-[#0d121f]">
+    <section id="demonstracao" className="py-24 relative overflow-hidden bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Header */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -139,13 +138,13 @@ export const LiveDemoShowcase: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto space-y-4 mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-card border-gray-700 text-xs font-semibold text-[#FF5777]">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full card-level-1 border-[#414042] text-label-caps text-primary uppercase">
             <Sparkles className="w-3.5 h-3.5" /> Módulos do Sistema
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
+          <h2 className="text-headline-md sm:text-headline-lg font-heading text-on-surface">
             Tudo o que a sua Instituição de Ensino Precisa num Só Lugar
           </h2>
-          <p className="text-gray-400 text-base">
+          <p className="text-on-surface-variant text-body-lg">
             Explore abaixo as principais funcionalidades desenhadas à medida do sistema de ensino angolano.
           </p>
         </motion.div>
@@ -166,24 +165,23 @@ export const LiveDemoShowcase: React.FC = () => {
               >
                 <div className={`grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
                   
-                  {/* Text Content */}
                   <div className={`lg:col-span-5 space-y-6 ${!isEven ? 'lg:order-2' : 'lg:order-1'}`}>
-                    <span className="inline-block px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-[#FF5777]/10 text-[#FF5777] border border-[#FF5777]/20">
+                    <span className="inline-block px-3 py-1 rounded-md text-label-caps font-mono tracking-wider bg-primary-container/10 text-primary border border-primary/20">
                       {mod.badge}
                     </span>
                     
-                    <h3 className="text-3xl sm:text-4xl font-extrabold text-white leading-snug">
+                    <h3 className="text-headline-md sm:text-headline-lg font-heading text-on-surface leading-snug">
                       {mod.title}
                     </h3>
                     
-                    <p className="text-lg text-gray-300 leading-relaxed">
+                    <p className="text-body-lg text-on-surface-variant leading-relaxed">
                       {mod.description}
                     </p>
 
                     <div className="space-y-3 pt-4">
                       {mod.highlights.map((item, i) => (
-                        <div key={i} className="flex items-start gap-3 text-base text-gray-200">
-                          <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+                        <div key={i} className="flex items-start gap-3 text-body-md text-on-surface">
+                          <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                           <span>{item}</span>
                         </div>
                       ))}
@@ -192,25 +190,25 @@ export const LiveDemoShowcase: React.FC = () => {
 
                   {/* Visual Image Card */}
                   <div className={`lg:col-span-7 ${!isEven ? 'lg:order-1' : 'lg:order-2'}`}>
-                    <div className="gradient-border shadow-2xl shadow-indigo-500/10 hover:shadow-[#FF5777]/20 transition-shadow duration-500">
-                      <div className="gradient-border-inner p-2 bg-[#121827]">
+                    <div className="card-level-2 p-1">
+                      <div className="bg-surface-container rounded-md overflow-hidden">
                         
-                        <div className="flex items-center justify-between px-4 py-3 border-b border-gray-800/60 mb-2">
+                        <div className="flex items-center justify-between px-4 py-3 border-b border-[#414042] mb-2 bg-surface-container-high">
                           <div className="flex items-center gap-3">
-                            <div className="p-2 rounded-lg bg-[#FF5777]/10 text-[#FF5777]">
+                            <div className="p-2 rounded-lg bg-[#131313] border border-[#414042] text-primary">
                               <mod.icon className="w-5 h-5" />
                             </div>
                             <div>
-                              <h4 className="font-bold text-white text-sm">{mod.name}</h4>
+                              <h4 className="font-bold text-on-surface text-body-md">{mod.name}</h4>
                             </div>
                           </div>
-                          <span className="text-[10px] bg-emerald-500/20 text-emerald-400 font-bold px-2 py-1 rounded-full uppercase tracking-wider">
+                          <span className="badge-valid">
                             Ativo
                           </span>
                         </div>
 
                         {/* Real Image Preview */}
-                        <div className="w-full overflow-hidden rounded-lg bg-[#0b0f19]">
+                        <div className="w-full overflow-hidden rounded-b-lg bg-surface-container-highest">
                           <img 
                             src={mod.image} 
                             alt={mod.name} 

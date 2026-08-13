@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { BookOpen, DollarSign, Users, AlertTriangle, FileSpreadsheet, CheckCircle2, ShieldCheck, Sparkles } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { BookOpen, DollarSign, Users, AlertTriangle, FileSpreadsheet, CheckCircle2, Sparkles } from 'lucide-react';
 import futureImg from '../assets/future.jpg';
 import financeImg from '../assets/Finance.gif';
 import chatcImg from '../assets/chatc.gif';

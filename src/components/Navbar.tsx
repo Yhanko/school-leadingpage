@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
-import { GraduationCap, Menu, X, ArrowRight, Sparkles } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import logoImg from '../assets/yhankoIMG.png';
 
-interface NavbarProps {
-  onOpenLeadModal: () => void;
-}
-
-export const Navbar: React.FC<NavbarProps> = ({ onOpenLeadModal }) => {
+export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [

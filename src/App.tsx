@@ -35,7 +35,7 @@ export function App() {
     <div className="min-h-screen bg-[#0b0f19] text-gray-100 font-sans selection:bg-[#FF5777] selection:text-white">
       <Toaster position="top-right" />
       {/* Navigation */}
-      <Navbar onOpenLeadModal={handleOpenLeadModal} />
+      <Navbar />
 
       {/* Hero Section */}
       <Hero onOpenLeadModal={handleOpenLeadModal} />

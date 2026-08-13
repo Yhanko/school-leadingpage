@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2, ShieldCheck, Star, Users, TrendingUp, Award, Play } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ShieldCheck, Star, Award, Play } from 'lucide-react';
 import heroImg from '../assets/dashboard_mockup.png';
 
 interface HeroProps {

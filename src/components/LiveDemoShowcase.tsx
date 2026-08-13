@@ -6,6 +6,7 @@ import financeImg from '../assets/Finance.gif';
 import chatcImg from '../assets/chatc.gif';
 import securityImg from '../assets/securityData.jpg';
 import automacaoImg from '../assets/automacao.jpg';
+import consultingImg from '../assets/consulting.gif';
 
 interface Module {
   id: string;
@@ -106,6 +107,23 @@ export const LiveDemoShowcase: React.FC = () => {
       badge: 'Relatórios Oficiais',
       accentColor: '#06b6d4',
       image: automacaoImg
+    },
+    {
+      id: 'consultoria',
+      name: 'Suporte & Consultoria',
+      icon: Users,
+      title: 'Acompanhamento Contínuo e Formação',
+      subtitle: 'Uma equipa dedicada ao sucesso da sua instituição.',
+      description: 'Oferecemos suporte técnico local em Angola, formação para professores e administrativos, e consultoria para otimizar os processos educativos da sua escola.',
+      highlights: [
+        'Atendimento rápido via WhatsApp e telefone',
+        'Formação inicial e contínua para toda a equipa',
+        'Auditoria e apoio na parametrização do sistema',
+        'Garantia de conformidade contínua'
+      ],
+      badge: 'Suporte Dedicado',
+      accentColor: '#8b5cf6',
+      image: consultingImg
     }
   ];
 

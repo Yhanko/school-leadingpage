@@ -31,11 +31,24 @@ export const LeadModal: React.FC<LeadModalProps> = ({
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    setTimeout(() => {
+    try {
+      const apiUrl = import.meta.env.VITE_SCHOOL_API_URL || 'http://localhost:4000';
+      const response = await fetch(`${apiUrl}/leads`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit');
+      }
+
       setIsSubmitting(false);
       setIsSubmitted(true);
 
@@ -49,7 +62,11 @@ export const LeadModal: React.FC<LeadModalProps> = ({
       } catch (err) {
         console.log('Confetti triggered', err);
       }
-    }, 1000);
+    } catch (error) {
+      console.error('Error submitting lead:', error);
+      setIsSubmitting(false);
+      alert('Ocorreu um erro ao enviar o pedido. Por favor, tente novamente.');
+    }
   };
 
   const provinces = [

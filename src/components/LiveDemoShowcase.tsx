@@ -138,7 +138,7 @@ export const LiveDemoShowcase: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto space-y-4 mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full card-level-1 border-[#414042] text-label-caps text-primary uppercase">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full card-level-1 border-outline text-label-caps text-primary uppercase">
             <Sparkles className="w-3.5 h-3.5" /> Módulos do Sistema
           </div>
           <h2 className="text-headline-md sm:text-headline-lg font-heading text-on-surface">
@@ -193,9 +193,9 @@ export const LiveDemoShowcase: React.FC = () => {
                     <div className="card-level-2 p-1">
                       <div className="bg-surface-container rounded-md overflow-hidden">
                         
-                        <div className="flex items-center justify-between px-4 py-3 border-b border-[#414042] mb-2 bg-surface-container-high">
+                        <div className="flex items-center justify-between px-4 py-3 border-b border-outline mb-2 bg-surface-container-high">
                           <div className="flex items-center gap-3">
-                            <div className="p-2 rounded-lg bg-[#131313] border border-[#414042] text-primary">
+                            <div className="p-2 rounded-lg bg-surface-container-highest border border-outline text-primary">
                               <mod.icon className="w-5 h-5" />
                             </div>
                             <div>

@@ -35,7 +35,7 @@ export const Testimonials: React.FC = () => {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full card-level-1 border-[#414042] text-label-caps text-primary uppercase">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full card-level-1 border-outline text-label-caps text-primary uppercase">
             <Star className="w-3.5 h-3.5 fill-primary" /> Casos de Sucesso
           </div>
           <h2 className="text-headline-md sm:text-headline-lg font-heading text-on-surface">
@@ -65,9 +65,9 @@ export const Testimonials: React.FC = () => {
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-[#414042] flex items-center gap-3">
+              <div className="pt-4 border-t border-outline flex items-center gap-3">
                 <div className="w-11 h-11 rounded-full bg-primary p-[2px]">
-                  <div className="w-full h-full bg-[#131313] rounded-full flex items-center justify-center font-bold text-on-surface text-body-md">
+                  <div className="w-full h-full bg-surface-container-highest rounded-full flex items-center justify-center font-bold text-on-surface text-body-md">
                     {rev.name.charAt(0)}
                   </div>
                 </div>

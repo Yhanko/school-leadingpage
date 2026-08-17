@@ -41,7 +41,7 @@ export const Faq: React.FC<FaqProps> = ({ onOpenLeadModal }) => {
         
         {/* Header */}
         <div className="text-center space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full card-level-1 border-[#414042] text-label-caps text-primary uppercase">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full card-level-1 border-outline text-label-caps text-primary uppercase">
             <HelpCircle className="w-3.5 h-3.5" /> Esclareça as suas Dúvidas
           </div>
           <h2 className="text-headline-md sm:text-headline-lg font-heading text-on-surface">
@@ -57,19 +57,19 @@ export const Faq: React.FC<FaqProps> = ({ onOpenLeadModal }) => {
           {faqs.map((faq, idx) => {
             const isOpen = openIdx === idx;
             return (
-              <div key={idx} className="card-level-1 rounded-2xl border-[#414042] overflow-hidden transition-all duration-200">
+              <div key={idx} className="card-level-1 rounded-2xl border-outline overflow-hidden transition-all duration-200">
                 <button
                   onClick={() => toggleFaq(idx)}
                   className="w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none"
                 >
                   <span className="text-headline-sm font-heading text-on-surface">{faq.q}</span>
-                  <div className={`p-1.5 rounded-lg bg-[#131313] text-primary transition-transform duration-300 ${isOpen ? 'rotate-180 bg-primary/20' : ''}`}>
+                  <div className={`p-1.5 rounded-lg bg-surface-container-highest text-primary transition-transform duration-300 ${isOpen ? 'rotate-180 bg-primary/20' : ''}`}>
                     <ChevronDown className="w-5 h-5" />
                   </div>
                 </button>
 
                 {isOpen && (
-                  <div className="px-6 pb-6 pt-0 text-body-md text-on-surface-variant leading-relaxed border-t border-[#414042] mt-2">
+                  <div className="px-6 pb-6 pt-0 text-body-md text-on-surface-variant leading-relaxed border-t border-outline mt-2">
                     <p className="pt-4">{faq.a}</p>
                   </div>
                 )}

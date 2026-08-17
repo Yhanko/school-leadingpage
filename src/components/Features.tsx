@@ -54,7 +54,7 @@ export const Features: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto space-y-4 mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full card-level-1 border-[#414042] text-label-caps text-primary uppercase">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full card-level-1 border-outline text-label-caps text-primary uppercase">
             <Award className="w-3.5 h-3.5" /> Diferenciais Exclusivos
           </div>
           <h2 className="text-headline-md sm:text-headline-lg font-heading text-on-surface">
@@ -80,10 +80,10 @@ export const Features: React.FC = () => {
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-14 h-14 rounded-2xl bg-[#131313] border border-[#414042] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-14 h-14 rounded-2xl bg-surface-container-highest border border-outline flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <Icon className="w-7 h-7 text-primary" />
                     </div>
-                    <span className="text-label-caps text-on-surface-variant bg-surface-container-high px-2.5 py-1 rounded-md border border-[#414042]">
+                    <span className="text-label-caps text-on-surface-variant bg-surface-container-high px-2.5 py-1 rounded-md border border-outline">
                       {adv.badge}
                     </span>
                   </div>
@@ -97,7 +97,7 @@ export const Features: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-[#414042] flex items-center gap-2 text-label-caps text-on-surface-variant">
+                <div className="pt-6 mt-6 border-t border-outline flex items-center gap-2 text-label-caps text-on-surface-variant">
                   <Clock className="w-3.5 h-3.5 text-primary" />
                   <span>Economize tempo e recursos hoje</span>
                 </div>

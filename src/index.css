@@ -3,8 +3,37 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --bg-color: #f1f5f9; /* Gray almost white */
+    --text-color: #0f172a;
+    --text-variant: #475569;
+    
+    --surface-lowest: #ffffff;
+    --surface-low: #f8fafc;
+    --surface: #ffffff;
+    --surface-high: #e2e8f0;
+    --surface-highest: #cbd5e1;
+    
+    --border-color: #cbd5e1;
+  }
+
+  .dark {
+    --bg-color: #0b0f19;
+    --text-color: #f8fafc;
+    --text-variant: #cbd5e1;
+    
+    --surface-lowest: #05070d;
+    --surface-low: #080b12;
+    --surface: #0b0f19;
+    --surface-high: #121827;
+    --surface-highest: #1e293b;
+    
+    --border-color: #334155;
+  }
+
   body {
-    background: theme('colors.background');
+    background: var(--bg-color);
+    color: var(--text-color);
     min-height: 100vh;
     background-attachment: fixed;
   }
@@ -13,19 +42,19 @@
 @layer components {
   /* Level 1 (Cards/Containers) */
   .card-level-1 {
-    background-color: #080b12;
-    border-color: #334155;
+    background-color: var(--surface-low);
+    border-color: var(--border-color);
     @apply border rounded-lg transition-colors duration-300;
   }
   
   .card-level-1:hover {
-    background-color: #0b0f19;
+    background-color: var(--surface);
   }
 
   /* Level 2 (Modals/Popovers) */
   .card-level-2 {
-    background-color: #0b0f19;
-    border-color: #475569;
+    background-color: var(--surface);
+    border-color: var(--border-color);
     @apply border rounded-lg transition-all duration-300 shadow-none;
   }
   
@@ -34,7 +63,7 @@
   }
 
   .card-level-2:hover {
-    background-color: #121827;
+    background-color: var(--surface-high);
   }
 
   /* Primary Buttons */
@@ -54,13 +83,13 @@
   /* Secondary Buttons */
   .btn-secondary {
     background-color: transparent;
-    border-color: #475569;
-    color: #f8fafc;
+    border-color: var(--border-color);
+    color: var(--text-color);
     @apply border font-semibold px-4 py-2 rounded transition-all duration-300;
   }
   
   .btn-secondary:hover {
-    background-color: #0b0f19;
+    background-color: var(--surface);
     border-color: #FF5777;
     color: #FF5777;
   }
@@ -94,9 +123,9 @@
 
   /* Input Fields */
   .input-field {
-    background-color: #05070d;
-    border-color: #475569;
-    color: #f8fafc;
+    background-color: var(--surface-lowest);
+    border-color: var(--border-color);
+    color: var(--text-color);
     @apply border rounded px-4 py-2 transition-colors duration-300 focus:outline-none;
   }
   
@@ -110,12 +139,32 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #05070d;
+  background: var(--surface-lowest);
 }
 ::-webkit-scrollbar-thumb {
-  background: #475569;
+  background: var(--text-variant);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #FF5777;
+  background: var(--surface-tint, #FF5777);
+}
+
+@layer utilities {
+  .bg-surface { background-color: var(--surface) !important; }
+  .bg-surface\/90 { background-color: color-mix(in srgb, var(--surface) 90%, transparent) !important; }
+  .bg-background { background-color: var(--bg-color) !important; }
+  .bg-surface-dim { background-color: var(--surface-low) !important; }
+  .bg-surface-bright { background-color: var(--surface-lowest) !important; }
+  .bg-surface-container-lowest { background-color: var(--surface-lowest) !important; }
+  .bg-surface-container-low { background-color: var(--surface-low) !important; }
+  .bg-surface-container { background-color: var(--surface) !important; }
+  .bg-surface-container-high { background-color: var(--surface-high) !important; }
+  .bg-surface-container-highest { background-color: var(--surface-highest) !important; }
+
+  .text-on-surface { color: var(--text-color) !important; }
+  .text-on-surface-variant { color: var(--text-variant) !important; }
+  .text-inverse-surface { color: var(--text-color) !important; }
+
+  .border-outline { border-color: var(--border-color) !important; }
+  .border-outline-variant { border-color: var(--border-color) !important; }
 }

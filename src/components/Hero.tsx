@@ -96,16 +96,16 @@ export const Hero: React.FC<HeroProps> = ({ onOpenLeadModal }) => {
           <div className="card-level-2 p-1">
             <div className="bg-surface-container rounded-md overflow-hidden">
               {/* Fake Browser Bar */}
-              <div className="bg-surface-container-high px-4 py-3 border-b border-[#414042] flex items-center justify-between">
+              <div className="bg-surface-container-high px-4 py-3 border-b border-outline flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-[#414042]" />
-                  <div className="w-3 h-3 rounded-full bg-[#414042]" />
-                  <div className="w-3 h-3 rounded-full bg-[#414042]" />
+                  <div className="w-3 h-3 rounded-full bg-outline" />
+                  <div className="w-3 h-3 rounded-full bg-outline" />
+                  <div className="w-3 h-3 rounded-full bg-outline" />
                   <span className="ml-4 text-data-mono text-on-surface-variant hidden sm:inline">app.yhankoeduca.ao/dashboard</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="badge-valid flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#C0C2C5] animate-pulse" /> Sistema Ativo
+                    <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" /> Sistema Ativo
                   </span>
                 </div>
               </div>

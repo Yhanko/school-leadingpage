@@ -28,7 +28,7 @@ export const RoiCalculator: React.FC<RoiCalculatorProps> = ({ onOpenLeadModalWit
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full card-level-1 border-[#414042] text-label-caps text-primary uppercase">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full card-level-1 border-outline text-label-caps text-primary uppercase">
             <Calculator className="w-3.5 h-3.5" /> Simulador Interativo
           </div>
           <h2 className="text-headline-md sm:text-headline-lg font-heading text-on-surface">
@@ -61,7 +61,7 @@ export const RoiCalculator: React.FC<RoiCalculatorProps> = ({ onOpenLeadModalWit
               step="25"
               value={studentCount}
               onChange={(e) => setStudentCount(Number(e.target.value))}
-              className="w-full h-3 bg-[#414042] rounded-lg appearance-none cursor-pointer accent-primary"
+              className="w-full h-3 bg-outline rounded-lg appearance-none cursor-pointer accent-primary"
             />
 
             <div className="flex justify-between text-label-caps text-on-surface-variant uppercase px-1">
@@ -95,12 +95,12 @@ export const RoiCalculator: React.FC<RoiCalculatorProps> = ({ onOpenLeadModalWit
           </div>
 
           {/* Recommended Plan Recommendation & CTA */}
-          <div className="p-6 rounded-2xl bg-surface-container-high border border-[#414042] flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="p-6 rounded-2xl bg-surface-container-high border border-outline flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
               <span className="text-label-caps text-on-surface-variant uppercase">Plano Ideal para a sua Escola:</span>
               <div className={`text-headline-sm font-heading ${plan.color} mt-1 flex items-center gap-2`}>
                 {plan.name}
-                <span className="text-label-caps bg-[#131313] text-on-surface-variant px-2.5 py-0.5 rounded-full border border-[#414042]">
+                <span className="text-label-caps bg-surface-container-highest text-on-surface-variant px-2.5 py-0.5 rounded-full border border-outline">
                   {plan.badge}
                 </span>
               </div>

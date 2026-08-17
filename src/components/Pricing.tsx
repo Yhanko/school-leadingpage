@@ -56,7 +56,7 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenLeadModalWithPlan }) => 
 
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full card-level-1 border-[#414042] text-label-caps text-primary uppercase">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full card-level-1 border-outline text-label-caps text-primary uppercase">
             <Sparkles className="w-3.5 h-3.5" /> Planos Transparentes
           </div>
           <h2 className="text-headline-md sm:text-headline-lg font-heading text-on-surface">
@@ -68,7 +68,7 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenLeadModalWithPlan }) => 
 
           {/* Billing Cycle Switcher */}
           <div className="flex items-center justify-center pt-4">
-            <div className="card-level-1 p-1.5 rounded-xl border border-[#414042] flex items-center gap-1">
+            <div className="card-level-1 p-1.5 rounded-xl border border-outline flex items-center gap-1">
               <button
                 onClick={() => setBillingCycle('mensal')}
                 className={`px-5 py-2 rounded-lg text-body-md font-semibold transition-all ${billingCycle === 'mensal'
@@ -103,7 +103,7 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenLeadModalWithPlan }) => 
                 key={i}
                 className={`card-level-1 p-8 rounded-2xl flex flex-col justify-between relative transition-all duration-300 ${plan.popular
                   ? 'border-2 border-primary bg-surface-container shadow-2xl shadow-black/50 lg:-translate-y-2'
-                  : 'border border-[#414042] hover:border-[#c0c2c5]'
+                  : 'border border-outline hover:border-secondary'
                   }`}
               >
                 {/* Popular Badge */}
@@ -125,7 +125,7 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenLeadModalWithPlan }) => 
                   </div>
 
                   {/* Price */}
-                  <div className="mb-8 p-4 rounded-xl bg-surface-container-highest border border-[#414042]">
+                  <div className="mb-8 p-4 rounded-xl bg-surface-container-highest border border-outline">
                     <div className="flex items-baseline gap-2">
                       <span className="text-headline-md sm:text-headline-lg text-on-surface font-heading">
                         {priceDisplay}
@@ -170,7 +170,7 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenLeadModalWithPlan }) => 
         </div>
 
         {/* Guarantee Footer Banner */}
-        <div className="mt-16 card-level-1 p-6 rounded-2xl border-[#414042] max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <div className="mt-16 card-level-1 p-6 rounded-2xl border-outline max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div className="flex items-center gap-3">
             <ShieldCheck className="w-8 h-8 text-primary shrink-0" />
             <div>

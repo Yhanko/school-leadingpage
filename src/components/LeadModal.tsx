@@ -102,13 +102,13 @@ export const LeadModal: React.FC<LeadModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
-      <div className="card-level-1 max-w-xl w-full relative shadow-2xl shadow-black/50 p-0 border border-[#414042]">
+      <div className="card-level-1 max-w-xl w-full relative shadow-2xl shadow-black/50 p-0 border border-outline">
         <div className="bg-surface-container rounded-[15px] p-6 sm:p-8 max-h-[90vh] overflow-y-auto relative">
 
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-5 right-5 text-on-surface-variant hover:text-on-surface p-2 rounded-lg bg-[#131313] transition-colors"
+            className="absolute top-5 right-5 text-on-surface-variant hover:text-on-surface p-2 rounded-lg bg-surface-container-highest transition-colors"
             aria-label="Fechar"
           >
             <X className="w-5 h-5" />
@@ -136,7 +136,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                     placeholder="Ex: Prof. Manuel Sebastião"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className={`w-full bg-surface-container-highest border ${errors.name ? 'border-red-500' : 'border-[#414042]'} rounded-xl px-4 py-2.5 text-body-md text-on-surface focus:outline-none focus:border-primary`}
+                    className={`w-full bg-surface-container-highest border ${errors.name ? 'border-red-500' : 'border-outline'} rounded-xl px-4 py-2.5 text-body-md text-on-surface focus:outline-none focus:border-primary`}
                   />
                   {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
                 </div>
@@ -152,7 +152,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                         placeholder="Ex: Colégio Esperança"
                         value={formData.schoolName}
                         onChange={(e) => setFormData({ ...formData, schoolName: e.target.value })}
-                        className={`w-full bg-surface-container-highest border ${errors.schoolName ? 'border-red-500' : 'border-[#414042]'} rounded-xl pl-9 pr-4 py-2.5 text-body-md text-on-surface focus:outline-none focus:border-primary`}
+                        className={`w-full bg-surface-container-highest border ${errors.schoolName ? 'border-red-500' : 'border-outline'} rounded-xl pl-9 pr-4 py-2.5 text-body-md text-on-surface focus:outline-none focus:border-primary`}
                       />
                     </div>
                     {errors.schoolName && <p className="text-red-500 text-xs mt-1">{errors.schoolName}</p>}
@@ -165,7 +165,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                       <select
                         value={formData.province}
                         onChange={(e) => setFormData({ ...formData, province: e.target.value })}
-                        className={`w-full bg-surface-container-highest border ${errors.province ? 'border-red-500' : 'border-[#414042]'} rounded-xl pl-9 pr-4 py-2.5 text-body-md text-on-surface focus:outline-none focus:border-primary appearance-none`}
+                        className={`w-full bg-surface-container-highest border ${errors.province ? 'border-red-500' : 'border-outline'} rounded-xl pl-9 pr-4 py-2.5 text-body-md text-on-surface focus:outline-none focus:border-primary appearance-none`}
                       >
                         {provinces.map((prov) => (
                           <option key={prov} value={prov}>{prov}</option>
@@ -187,7 +187,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                         placeholder="+244 923 000 000"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className={`w-full bg-surface-container-highest border ${errors.phone ? 'border-red-500' : 'border-[#414042]'} rounded-xl pl-9 pr-4 py-2.5 text-body-md text-on-surface focus:outline-none focus:border-primary`}
+                        className={`w-full bg-surface-container-highest border ${errors.phone ? 'border-red-500' : 'border-outline'} rounded-xl pl-9 pr-4 py-2.5 text-body-md text-on-surface focus:outline-none focus:border-primary`}
                       />
                     </div>
                     {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
@@ -203,7 +203,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                         placeholder="direcao@escola.co.ao"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className={`w-full bg-surface-container-highest border ${errors.email ? 'border-red-500' : 'border-[#414042]'} rounded-xl pl-9 pr-4 py-2.5 text-body-md text-on-surface focus:outline-none focus:border-primary`}
+                        className={`w-full bg-surface-container-highest border ${errors.email ? 'border-red-500' : 'border-outline'} rounded-xl pl-9 pr-4 py-2.5 text-body-md text-on-surface focus:outline-none focus:border-primary`}
                       />
                     </div>
                     {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
@@ -217,7 +217,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                       type="number"
                       value={formData.students}
                       onChange={(e) => setFormData({ ...formData, students: Number(e.target.value) })}
-                      className={`w-full bg-surface-container-highest border ${errors.students ? 'border-red-500' : 'border-[#414042]'} rounded-xl px-4 py-2.5 text-body-md text-on-surface focus:outline-none focus:border-primary`}
+                      className={`w-full bg-surface-container-highest border ${errors.students ? 'border-red-500' : 'border-outline'} rounded-xl px-4 py-2.5 text-body-md text-on-surface focus:outline-none focus:border-primary`}
                     />
                     {errors.students && <p className="text-red-500 text-xs mt-1">{errors.students}</p>}
                   </div>
@@ -227,7 +227,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                     <select
                       value={formData.plan}
                       onChange={(e) => setFormData({ ...formData, plan: e.target.value })}
-                      className={`w-full bg-surface-container-highest border ${errors.plan ? 'border-red-500' : 'border-[#414042]'} rounded-xl px-4 py-2.5 text-body-md text-on-surface focus:outline-none focus:border-primary`}
+                      className={`w-full bg-surface-container-highest border ${errors.plan ? 'border-red-500' : 'border-outline'} rounded-xl px-4 py-2.5 text-body-md text-on-surface focus:outline-none focus:border-primary`}
                     >
                       <option value="Starter">Starter (Até 250 alunos)</option>
                       <option value="Profissional">Profissional (Até 800 alunos)</option>
@@ -244,7 +244,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                     placeholder="Conte-nos brevemente o que pretende melhorar na sua escola..."
                     value={formData.notes}
                     onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                    className={`w-full bg-surface-container-highest border ${errors.notes ? 'border-red-500' : 'border-[#414042]'} rounded-xl p-3 text-body-md text-on-surface focus:outline-none focus:border-primary`}
+                    className={`w-full bg-surface-container-highest border ${errors.notes ? 'border-red-500' : 'border-outline'} rounded-xl p-3 text-body-md text-on-surface focus:outline-none focus:border-primary`}
                   />
                   {errors.notes && <p className="text-red-500 text-xs mt-1">{errors.notes}</p>}
                 </div>
@@ -276,7 +276,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                 Obrigado, <strong className="text-on-surface">{formData.name}</strong>! A nossa equipa de consultores comerciais para a instituição <strong className="text-primary">{formData.schoolName}</strong> entrará em contacto no número <strong className="text-on-surface">{formData.phone}</strong> em menos de 2 horas.
               </p>
 
-              <div className="p-4 rounded-xl bg-surface-container-highest border border-[#414042] text-body-md text-on-surface-variant">
+              <div className="p-4 rounded-xl bg-surface-container-highest border border-outline text-body-md text-on-surface-variant">
                 <span>Deseja atendimento imediato? Ligue para <strong className="text-on-surface">+244 947 315 059</strong> ou envie mensagem no WhatsApp.</span>
               </div>
 

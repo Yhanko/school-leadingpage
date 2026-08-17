@@ -32,7 +32,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-on-background font-sans selection:bg-primary selection:text-on-primary">
+    <div className="min-h-screen font-sans selection:bg-primary selection:text-on-primary">
       <Toaster position="top-right" />
       {/* Navigation */}
       <Navbar />

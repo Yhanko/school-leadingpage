@@ -9,10 +9,12 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenLeadModalWithPlan }) => 
   const [billingCycle, setBillingCycle] = useState<'mensal' | 'anual'>('anual');
   const [apiPlans, setApiPlans] = useState<any[]>([]);
 
+  console.log('API Plans:', apiPlans); // Debugging line to check the fetched plans
+
   useEffect(() => {
     const fetchPlans = async () => {
       try {
-        const apiUrl = import.meta.env.VITE_SCHOOL_API_URL || 'http://localhost:4000';
+        const apiUrl = import.meta.env.VITE_SCHOOL_API_URL;
         const response = await fetch(`${apiUrl}/plans`);
         if (response.ok) {
           const data = await response.json();
@@ -33,14 +35,14 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenLeadModalWithPlan }) => 
     {
       name: 'Starter',
       badge: 'Escolas Pequenas',
-      description: 'Perfeito para creches, jardins e colégios iniciais com até 250 alunos.',
-      monthlyPrice: '45.000 Kz',
+      description: 'Perfeito para creches, jardins e colégios iniciais com até 50 alunos.',
+      monthlyPrice: '20.000 Kz',
       annualPrice: '36.000 Kz', // per month billed annually
       annualNote: 'Cobrado 432.000 Kz / ano',
       popular: false,
       accentColor: 'indigo',
       features: [
-        'Até 250 Alunos Matriculados',
+        'Até 50 Alunos Matriculados',
         'Gestão de Turmas e Salas',
         'Lançamento de Notas e Sumários',
         'Emissão de Pautas em PDF',
@@ -52,13 +54,13 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenLeadModalWithPlan }) => 
       name: 'Profissional',
       badge: 'Mais Popular em Angola',
       description: 'A escolha ideal para colégios completos (Primário, I e II Ciclos).',
-      monthlyPrice: '85.000 Kz',
-      annualPrice: '68.000 Kz',
-      annualNote: 'Cobrado 816.000 Kz / ano',
+      monthlyPrice: '50.000 Kz',
+      annualPrice: '600.000 Kz',
+      annualNote: 'Cobrado 600.000 Kz / ano',
       popular: true,
       accentColor: 'pink',
       features: [
-        'Até 800 Alunos Matriculados',
+        'Até 100 Alunos Matriculados',
         'Todas as funcionalidades do Starter',
         'Portal dos Encarregados de Educação',
         'Envio de Notificações de Cobrança',

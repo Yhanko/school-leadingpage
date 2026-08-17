@@ -9,8 +9,6 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenLeadModalWithPlan }) => 
   const [billingCycle, setBillingCycle] = useState<'mensal' | 'anual'>('anual');
   const [apiPlans, setApiPlans] = useState<any[]>([]);
 
-  console.log('API Plans:', apiPlans); // Debugging line to check the fetched plans
-
   useEffect(() => {
     const fetchPlans = async () => {
       try {
@@ -31,84 +29,31 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenLeadModalWithPlan }) => 
     return new Intl.NumberFormat('pt-AO').format(price) + ' Kz';
   };
 
-  const defaultPlans = [
-    {
-      name: 'Starter',
-      badge: 'Escolas Pequenas',
-      description: 'Perfeito para creches, jardins e colégios iniciais com até 50 alunos.',
-      monthlyPrice: '20.000 Kz',
-      annualPrice: '36.000 Kz', // per month billed annually
-      annualNote: 'Cobrado 432.000 Kz / ano',
-      popular: false,
+  const plans = apiPlans.map((apiPlan, index) => {
+    const mPrice = apiPlan.price;
+
+    return {
+      name: apiPlan.name,
+      badge: index === 1 ? 'Mais Popular' : 'Plano', // Make the second plan visually stand out by default
+      description: `Perfeito para instituições com até ${apiPlan.maxStudents} alunos.`,
+      monthlyPrice: mPrice === 0 ? 'Grátis' : formatPrice(mPrice),
+      annualPrice: mPrice === 0 ? 'Grátis' : formatPrice(mPrice),
+      annualNote: mPrice === 0 ? 'Plano gratuito' : `Cobrado ${formatPrice(mPrice * 12)} / ano`,
+      popular: index === 1,
       accentColor: 'indigo',
       features: [
-        'Até 50 Alunos Matriculados',
+        `Até ${apiPlan.maxStudents} Alunos Matriculados`,
+        `Até ${apiPlan.maxTeachers} Professores`,
         'Gestão de Turmas e Salas',
-        'Lançamento de Notas e Sumários',
-        'Emissão de Pautas em PDF',
-        'Controlo de Propinas e Faturação',
-        'Suporte por WhatsApp e Email'
+        'Suporte Básico'
       ]
-    },
-    {
-      name: 'Profissional',
-      badge: 'Mais Popular em Angola',
-      description: 'A escolha ideal para colégios completos (Primário, I e II Ciclos).',
-      monthlyPrice: '50.000 Kz',
-      annualPrice: '600.000 Kz',
-      annualNote: 'Cobrado 600.000 Kz / ano',
-      popular: true,
-      accentColor: 'pink',
-      features: [
-        'Até 100 Alunos Matriculados',
-        'Todas as funcionalidades do Starter',
-        'Portal dos Encarregados de Educação',
-        'Envio de Notificações de Cobrança',
-        'Módulo Disciplinar e Ocorrências',
-        'Relatórios e Gráficos Financeiros',
-        'Treinamento Completo da Equipa Incluído'
-      ]
-    },
-    {
-      name: 'Enterprise',
-      badge: 'Grandes Instituições',
-      description: 'Solução sob medida para grandes complexos escolares e redes de ensino.',
-      monthlyPrice: 'Sob Consulta',
-      annualPrice: 'Sob Consulta',
-      annualNote: 'Preço personalizado',
-      popular: false,
-      accentColor: 'emerald',
-      features: [
-        'Alunos e Turmas Ilimitados',
-        'Todas as funcionalidades do Profissional',
-        'Integração com Sistemas Bancários',
-        'Gestor de Conta Técnico Exclusivo',
-        'Suporte Prioritário 24/7 Presencial/Online',
-        'Personalização de Documentos e Boletins',
-        'Migração e Importação de Dados Grátis'
-      ]
-    }
-  ];
-
-  const plans = defaultPlans.map(plan => {
-    const apiPlan = apiPlans.find(p => p.name.toLowerCase() === plan.name.toLowerCase());
-    if (apiPlan) {
-      const mPrice = apiPlan.price;
-      const aPrice = mPrice * 0.8; // 20% discount
-      return {
-        ...plan,
-        monthlyPrice: formatPrice(mPrice),
-        annualPrice: formatPrice(aPrice),
-        annualNote: `Cobrado ${formatPrice(aPrice * 12)} / ano`
-      };
-    }
-    return plan;
+    };
   });
 
   return (
     <section id="planos" className="py-24 relative overflow-hidden bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full card-level-1 border-[#414042] text-label-caps text-primary uppercase">
@@ -126,21 +71,19 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenLeadModalWithPlan }) => 
             <div className="card-level-1 p-1.5 rounded-xl border border-[#414042] flex items-center gap-1">
               <button
                 onClick={() => setBillingCycle('mensal')}
-                className={`px-5 py-2 rounded-lg text-body-md font-semibold transition-all ${
-                  billingCycle === 'mensal'
-                    ? 'bg-surface-container-highest text-on-surface shadow'
-                    : 'text-on-surface-variant hover:text-on-surface'
-                }`}
+                className={`px-5 py-2 rounded-lg text-body-md font-semibold transition-all ${billingCycle === 'mensal'
+                  ? 'bg-surface-container-highest text-on-surface shadow'
+                  : 'text-on-surface-variant hover:text-on-surface'
+                  }`}
               >
                 Pagamento Mensal
               </button>
               <button
                 onClick={() => setBillingCycle('anual')}
-                className={`px-5 py-2 rounded-lg text-body-md font-semibold transition-all flex items-center gap-2 ${
-                  billingCycle === 'anual'
-                    ? 'bg-primary text-black shadow'
-                    : 'text-on-surface-variant hover:text-on-surface'
-                }`}
+                className={`px-5 py-2 rounded-lg text-body-md font-semibold transition-all flex items-center gap-2 ${billingCycle === 'anual'
+                  ? 'bg-primary text-black shadow'
+                  : 'text-on-surface-variant hover:text-on-surface'
+                  }`}
               >
                 Pagamento Anual
                 <span className="text-label-caps bg-primary-container text-on-primary-container px-2 py-0.5 rounded-full uppercase">
@@ -158,11 +101,10 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenLeadModalWithPlan }) => 
             return (
               <div
                 key={i}
-                className={`card-level-1 p-8 rounded-2xl flex flex-col justify-between relative transition-all duration-300 ${
-                  plan.popular
-                    ? 'border-2 border-primary bg-surface-container shadow-2xl shadow-black/50 lg:-translate-y-2'
-                    : 'border border-[#414042] hover:border-[#c0c2c5]'
-                }`}
+                className={`card-level-1 p-8 rounded-2xl flex flex-col justify-between relative transition-all duration-300 ${plan.popular
+                  ? 'border-2 border-primary bg-surface-container shadow-2xl shadow-black/50 lg:-translate-y-2'
+                  : 'border border-[#414042] hover:border-[#c0c2c5]'
+                  }`}
               >
                 {/* Popular Badge */}
                 {plan.popular && (
@@ -214,11 +156,10 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenLeadModalWithPlan }) => 
                 {/* Plan Action CTA */}
                 <button
                   onClick={() => onOpenLeadModalWithPlan(plan.name)}
-                  className={`w-full py-3.5 rounded-xl font-bold text-body-md transition-all cursor-pointer ${
-                    plan.popular
-                      ? 'btn-primary'
-                      : 'btn-secondary'
-                  }`}
+                  className={`w-full py-3.5 rounded-xl font-bold text-body-md transition-all cursor-pointer ${plan.popular
+                    ? 'btn-primary'
+                    : 'btn-secondary'
+                    }`}
                 >
                   Escolher {plan.name}
                 </button>

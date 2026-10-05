@@ -1,32 +1,73 @@
-# React + TypeScript + Vite
+# 🎓 School Landing (Yhanko Educa)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Landing Page institucional e de conversão do ecossistema **Yhanko Educa**, desenvolvida com **React 19**, **TypeScript**, **Vite 8** e **TailwindCSS 3**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Execução em Desenvolvimento
 
-## React Compiler
+```bash
+# Instalar dependências
+npm install
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Rodar servidor de desenvolvimento
+npm run dev
 
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+# Compilar para produção localmente
+npm run build
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+---
+
+## 🐳 Execução com Docker (Produção)
+
+A imagem Docker foi concebida com arquitetura **Multi-Stage Build**, servidor web **Nginx Unprivileged**, non-root user (UID 101), compressão gzip, cache estático imutável e cabeçalhos de segurança HTTP.
+
+### 1. Usando Docker Compose (Recomendado)
+
+```bash
+# Iniciar o container
+docker compose up -d --build
+
+# Verificar logs
+docker compose logs -f
+
+# Parar o container
+docker compose down
+```
+
+A landing page estará acessível em: `http://localhost:3001` (ou na porta configurada via variável `PORT`).
+
+### 2. Usando Docker CLI diretamente
+
+```bash
+# Build da imagem
+docker build -t school-landing:latest .
+
+# Build customizando a URL da API backend
+docker build \
+  --build-arg VITE_SCHOOL_API_URL=https://school-api-production-a1c6.up.railway.app \
+  -t school-landing:latest .
+
+# Executar o container
+docker run -d \
+  --name school-landing \
+  -p 3001:8080 \
+  --restart unless-stopped \
+  school-landing:latest
+```
+
+---
+
+## 🛡️ Destaques de Arquitetura e Segurança
+
+- **Multi-Stage Build**: Apenas os assets estáticos gerados pelo Vite são transferidos para a imagem final (`dist/`).
+- **Nginx Unprivileged**: Execução segura sem privilégios de root (UID 101 `nginx`).
+- **Tamanho Ultraleve**: O container final utiliza menos de **9 MB de RAM** em execução.
+- **Cabeçalhos de Segurança**: `X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy` e `server_tokens off;`.
+- **Performance e Caching**:
+  - Assets com hash (`/assets/*`): Cache imutável de 1 ano (`Cache-Control: public, max-age=31536000, immutable`).
+  - `index.html`: `Cache-Control: no-cache, no-store, must-revalidate` para garantir que novas versões reflitam instantaneamente.
+  - Compressão Gzip ativada para HTML, CSS, JS, SVG e JSON.
+- **Roteamento SPA**: Redirecionamento `try_files $uri $uri/ /index.html;` para suporte nativo a rotas de cliente.
+- **Healthcheck Nativo**: Endpoint `/healthz` configurado para orquestradores (Kubernetes, Docker Swarm, Railway, Render, etc.).

@@ -61,7 +61,10 @@ export const LeadModal: React.FC<LeadModalProps> = ({
     setIsSubmitting(true);
 
     try {
-      const apiUrl = import.meta.env.VITE_SCHOOL_API_URL;
+      const rawApiUrl = (typeof window !== 'undefined' && (window as any).__ENV__?.VITE_SCHOOL_API_URL)
+        || import.meta.env.VITE_SCHOOL_API_URL
+        || 'https://school-api-production-a1c6.up.railway.app';
+      const apiUrl = rawApiUrl.replace(/\/+$/, '');
       const response = await fetch(`${apiUrl}/leads`, {
         method: 'POST',
         headers: {

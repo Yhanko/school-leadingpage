@@ -26,9 +26,6 @@ yarn-error.log*
 pnpm-debug.log*
 
 # Docker e infraestrutura local
-Dockerfile*
-docker-compose*.yml
-.dockerignore
 
 # Scripts auxiliares temporários e documentação desnecessária no build
 *.py
